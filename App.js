@@ -11,27 +11,19 @@ import {
   Text,
   View
 } from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
+import { LoginButton } from 'react-native-facebook-account-kit'
 export default class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <LoginButton
+            style={styles.buttonContainer}
+            type="phone"
+            onLogin={(token) => console.log(token)}
+            onError={(error) => console.log(error)}
+        >
+          <Text style={styles.buttonText}>Login with SMS</Text>
+        </LoginButton>
       </View>
     );
   }
@@ -41,17 +33,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  buttonContainer: {
+      backgroundColor:'blue',
+      paddingVertical: 15,
+      paddingHorizontal: 10,
+      marginHorizontal: 5,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  buttonText: {
+      textAlign: 'center',
+      color: '#FFFFFF',
+      fontWeight: '700',
+  }
 });
