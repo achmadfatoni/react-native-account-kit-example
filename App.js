@@ -11,8 +11,20 @@ import {
   Text,
   View
 } from 'react-native';
-import { LoginButton } from 'react-native-facebook-account-kit'
+import  AccountKit, { LoginButton } from 'react-native-facebook-account-kit'
 export default class App extends Component<{}> {
+
+  componentWillMount() {
+    this.configureAccountKit();
+  }
+
+  configureAccountKit() {
+    AccountKit.configure({
+      countryWhitelist: ["ID", "MY", "SG"],
+      countryBlacklist: ["US"],
+      defaultCountry: "ID"
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
