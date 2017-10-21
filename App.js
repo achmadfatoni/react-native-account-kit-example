@@ -67,6 +67,17 @@ export default class App extends Component<{}> {
     }
   }
 
+  onLogout() {
+    AccountKit.logout()
+      .then(() => {
+        this.setState({
+          token: null,
+          account: null,
+        })
+      })
+      .catch(e => console.log('Failed to logout'))
+  }
+
   renderLoginPage = () => {
     return (
       <LoginButton
@@ -90,6 +101,7 @@ export default class App extends Component<{}> {
         <Text style={styles.text}>{ phoneNumber.countryCode }{ phoneNumber.number }</Text>
         <TouchableOpacity
           style={styles.buttonContainer}
+          onPress={() => this.onLogout()}
         >
           <Text style={styles.buttonText}>LOGOUT</Text>
         </TouchableOpacity>
