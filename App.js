@@ -80,12 +80,13 @@ export default class App extends Component<{}> {
   }
 
   renderUserPage = () => {
+    const { id, phoneNumber } = this.state.account;
     return (
       <View>
         <Text style={styles.label}>Account Kit ID</Text>
-        <Text style={styles.text}>{this.state.account.id}</Text>
+        <Text style={styles.text}>{ id }</Text>
         <Text style={styles.label}>Phone Number</Text>
-        <Text style={styles.label}>{this.state.account.phoneNumber.countryCode}{this.state.account.phoneNumber.number}</Text>
+        <Text style={styles.label}>{ phoneNumber.countryCode }{ phoneNumber.number }</Text>
       </View>
     )
   }
