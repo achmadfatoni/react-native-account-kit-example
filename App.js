@@ -9,6 +9,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
 import  AccountKit, { LoginButton } from 'react-native-facebook-account-kit'
@@ -86,7 +87,12 @@ export default class App extends Component<{}> {
         <Text style={styles.label}>Account Kit ID</Text>
         <Text style={styles.text}>{ id }</Text>
         <Text style={styles.label}>Phone Number</Text>
-        <Text style={styles.label}>{ phoneNumber.countryCode }{ phoneNumber.number }</Text>
+        <Text style={styles.text}>{ phoneNumber.countryCode }{ phoneNumber.number }</Text>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+        >
+          <Text style={styles.buttonText}>LOGOUT</Text>
+        </TouchableOpacity>
       </View>
     )
   }
